@@ -1,0 +1,36 @@
+name: MyPlugin
+version: 1.0
+main: io.github.mattkearney.MyPlugin.MyPlugin
+author: Matt Kearney
+commands:
+  sethome:
+    description: Sets the home of the user
+    usage: /sethome [name]
+    permission: myplugin.sethome
+    permission-message: You do not have the myplugin.sethome permission
+  home:
+    description: Teleports the user to a home
+    usage: /home [name]
+    permission: myplugin.home
+    permission-message: You do not have the myplugin.home permission\
+  nickname:
+    description: Changes the nickname of a player
+    usage: /nickname [nickname]
+    permisssion: myplugin.nickname
+    permission-message: You do not have the myplugin.nickname permission
+permissions:
+  myplugin.*:
+    description: Gives access to all myplugin commands
+    children:
+      myplugin.sethome: true
+      myplugin.home: true
+      myplugin.nickname: true
+  myplugin.sethome:
+    description: Allows you to set homes
+    default: true
+  myplugin.home:
+    description: Allows you to teleport to a home
+    default: true
+  myplugin.nickname:
+    description: Allows you to set your nickname
+    default: true
