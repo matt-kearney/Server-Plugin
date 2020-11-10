@@ -3,7 +3,10 @@ package io.github.mattkearney.MyPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+
+import java.io.File;
 
 public class NickName implements CommandExecutor {
 
@@ -15,6 +18,7 @@ public class NickName implements CommandExecutor {
 
     public void setNickname(Player target, String nickname){
         target.setDisplayName(nickname);
+        plugin.writeMeta(target.getName()+".nickname", nickname);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
@@ -22,7 +26,7 @@ public class NickName implements CommandExecutor {
 
         if(cmd.getName().equalsIgnoreCase("nickname")){
             if(args.length != 1){
-                sender.sendMessage("&6Incorrect arguments!");
+                sender.sendMessage("§6Incorrect arguments!");
                 return false;
             }else{
                 Player player = (Player) sender;
